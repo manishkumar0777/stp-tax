@@ -1,23 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import type { Metadata } from "next";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { PageBanner, ContactForm } from "@/components/site/Sections";
 import { SITE } from "@/lib/site";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Us — Sterling Tax Partner" },
-      { name: "description", content: "Call 7439786257 or email sterlingtaxpartner@gmail.com. Visit us at Stephen House, BBD Bagh, Kolkata." },
-      { property: "og:title", content: "Contact Sterling Tax Partner" },
-      { property: "og:description", content: "Send an enquiry or visit our office in BBD Bagh, Kolkata." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: ContactPage,
-});
+export const metadata: Metadata = {
+  title: "Contact Us — Sterling Tax Partner",
+  description:
+    "Call 7439786257 or email sterlingtaxpartner@gmail.com. Visit us at Stephen House, BBD Bagh, Kolkata.",
+};
 
-function ContactPage() {
+export default function ContactPage() {
   const cards = [
     { icon: MapPin, t: "Our Address", v: SITE.address },
     { icon: Phone, t: "Phone Number", v: SITE.phoneDisplay, href: SITE.phoneHref },
@@ -25,18 +17,26 @@ function ContactPage() {
   ];
   return (
     <>
-      <PageBanner title="Contact Us" />
+      <PageBanner title="Contact Us" subtitle="Get In Touch Today" />
       <section className="py-24">
         <div className="container-site">
           <div className="grid gap-7 md:grid-cols-3">
             {cards.map((c) => (
-              <div key={c.t} className="flex flex-col items-center rounded-sm bg-secondary p-9 text-center">
+              <div
+                key={c.t}
+                className="flex flex-col items-center rounded-sm bg-secondary p-9 text-center"
+              >
                 <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   <c.icon className="h-7 w-7" />
                 </span>
                 <h2 className="mt-5 text-xl font-bold">{c.t}</h2>
                 {c.href ? (
-                  <a href={c.href} className="mt-2 break-all text-muted-foreground hover:text-primary">{c.v}</a>
+                  <a
+                    href={c.href}
+                    className="mt-2 break-all text-muted-foreground hover:text-primary"
+                  >
+                    {c.v}
+                  </a>
                 ) : (
                   <p className="mt-2 text-muted-foreground">{c.v}</p>
                 )}

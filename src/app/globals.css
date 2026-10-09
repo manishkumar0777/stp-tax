@@ -1,5 +1,5 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
+@source "../../src";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -66,14 +66,23 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
 }
 
 @utility container-site {
@@ -92,12 +101,22 @@
 }
 
 @keyframes hero-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes hero-zoom {
-  from { transform: scale(1.12); }
-  to { transform: scale(1); }
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 @utility animate-hero-up {
   animation: hero-up 0.9s ease-out both;

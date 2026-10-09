@@ -1,18 +1,23 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { MapPin, Mail, Phone, Menu, X, ArrowRight } from "lucide-react";
-import logo from "@/assets/sterling-logo.png.asset.json";
+import logo from "@/assets/sterling-logo.png";
 import { SITE } from "@/lib/site";
 
 const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About Us" },
-  { to: "/services", label: "Services" },
-  { to: "/contact", label: "Contact Us" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact Us" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
     <header>
       <div className="hidden bg-ink text-ink-foreground md:block">
@@ -26,31 +31,38 @@ export function SiteHeader() {
               <Mail className="h-4 w-4 text-primary" /> {SITE.email}
             </a>
           </div>
-          <a href={SITE.phoneHref} className="hidden items-center gap-2 font-semibold hover:text-primary lg:flex">
+          <a
+            href={SITE.phoneHref}
+            className="hidden items-center gap-2 font-semibold hover:text-primary lg:flex"
+          >
             <Phone className="h-4 w-4 text-primary" /> {SITE.phoneDisplay}
           </a>
         </div>
       </div>
       <div className="sticky top-0 z-40 bg-background shadow-sm">
         <div className="container-site flex h-24 items-center justify-between">
-          <Link to="/" aria-label={SITE.name}>
-            <img src={logo.url} alt={`${SITE.name} logo`} className="h-14 w-auto" width={840} height={210} />
+          <Link href="/" aria-label={SITE.name}>
+            <img
+              src={(logo as any).src || logo}
+              alt={`${SITE.name} logo`}
+              className="h-14 w-auto"
+              width={840}
+              height={210}
+            />
           </Link>
           <nav className="hidden items-center gap-8 lg:flex">
             {NAV.map((n) => (
               <Link
-                key={n.to}
-                to={n.to}
-                activeOptions={{ exact: true }}
-                className="text-[17px] font-medium text-foreground transition-colors hover:text-primary"
-                activeProps={{ className: "text-primary" }}
+                key={n.href}
+                href={n.href}
+                className={`text-[17px] font-medium transition-colors hover:text-primary ${pathname === n.href ? "text-primary" : "text-foreground"}`}
               >
                 {n.label}
               </Link>
             ))}
           </nav>
           <Link
-            to="/contact"
+            href="/contact"
             className="hidden items-center gap-2 rounded-sm bg-ink px-7 py-4 text-sm font-bold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground lg:inline-flex"
           >
             Consult an Expert <ArrowRight className="h-4 w-4" />
@@ -67,12 +79,10 @@ export function SiteHeader() {
           <nav className="border-t bg-background lg:hidden">
             {NAV.map((n) => (
               <Link
-                key={n.to}
-                to={n.to}
+                key={n.href}
+                href={n.href}
                 onClick={() => setOpen(false)}
-                activeOptions={{ exact: true }}
-                className="block border-b px-6 py-3 font-medium"
-                activeProps={{ className: "text-primary" }}
+                className={`block border-b px-6 py-3 font-medium ${pathname === n.href ? "text-primary" : ""}`}
               >
                 {n.label}
               </Link>

@@ -1,19 +1,27 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { Phone, ArrowRight, CheckCircle2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+
 import { SITE, SERVICES } from "@/lib/site";
 import heroImg from "@/assets/hero-1.jpg";
 
-export function PageBanner({ title }: { title: string }) {
+export function PageBanner({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <section className="relative isolate overflow-hidden py-28 text-center text-ink-foreground">
-      <img src={heroImg} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+      <img
+        src={(heroImg as any).src}
+        alt=""
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
       <div className="absolute inset-0 -z-10 bg-overlay" />
       <h1 className="text-4xl font-bold md:text-5xl">{title}</h1>
-      <p className="mt-4 text-sm">
-        <Link to="/" className="hover:text-primary">Home</Link> <span className="mx-2 text-primary">/</span> {title}
-      </p>
+      {subtitle && (
+        <p className="mt-4 text-sm font-medium uppercase tracking-widest text-primary/90">
+          {subtitle}
+        </p>
+      )}
     </section>
   );
 }
@@ -25,8 +33,12 @@ export function CallBox() {
         <Phone className="h-6 w-6" />
       </span>
       <div>
-        <p className="text-sm font-semibold uppercase text-muted-foreground">Call us for a consultation</p>
-        <a href={SITE.phoneHref} className="text-xl font-bold hover:text-primary">{SITE.phoneDisplay}</a>
+        <p className="text-sm font-semibold uppercase text-muted-foreground">
+          Call us for a consultation
+        </p>
+        <a href={SITE.phoneHref} className="text-xl font-bold hover:text-primary">
+          {SITE.phoneDisplay}
+        </a>
       </div>
     </div>
   );
@@ -38,7 +50,9 @@ export function ServicesGrid() {
       <div className="container-site">
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <p className="eyebrow">Our Latest Services</p>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">What Kind of Services We Are Offering</h2>
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            What Kind of Services We Are Offering
+          </h2>
         </div>
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
@@ -50,10 +64,15 @@ export function ServicesGrid() {
                 <s.icon className="h-8 w-8" />
               </span>
               <h3 className="mt-6 text-xl font-bold">
-                <Link to="/contact" className="hover:text-primary">{s.title}</Link>
+                <Link href="/contact" className="hover:text-primary">
+                  {s.title}
+                </Link>
               </h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">{s.text}</p>
-              <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase text-primary">
+              <Link
+                href="/contact"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase text-primary"
+              >
                 Enquire <ArrowRight className="h-4 w-4" />
               </Link>
             </article>
@@ -66,14 +85,20 @@ export function ServicesGrid() {
 
 export function ConsultationCta() {
   return (
-    <section className="bg-ink py-16 text-ink-foreground">
-      <div className="container-site flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
+    <section className="relative isolate overflow-hidden py-28 md:py-36 text-ink-foreground">
+      <img
+        src={(heroImg as any).src}
+        alt=""
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+      />
+      <div className="absolute inset-0 -z-10 bg-overlay bg-ink/80" />
+      <div className="container-site relative flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
         <div>
-          <p className="eyebrow">We are here to answer your questions</p>
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl">Need A Consultation?</h2>
+          <p className="eyebrow text-white">We are here to answer your questions 24/7</p>
+          <h2 className="mt-2 text-3xl font-bold text-white md:text-4xl">NEED A CONSULTATION?</h2>
         </div>
         <Link
-          to="/contact"
+          href="/contact"
           className="inline-flex items-center gap-2 rounded-sm bg-primary px-8 py-4 font-bold uppercase text-primary-foreground transition-opacity hover:opacity-90"
         >
           Get a free consultation <ArrowRight className="h-4 w-4" />
@@ -107,14 +132,22 @@ export function ContactForm() {
       return;
     }
     setState("sending");
-    const { error } = await supabase.from("contact_submissions").insert(data);
-    if (error) {
-      setErr("Something went wrong. Please call or email us directly.");
-      setState("error");
-    } else {
-      form.reset();
-      setState("done");
-    }
+    
+    // Format the message for WhatsApp
+    const text = `*New Inquiry from Website*
+*Name:* ${data.name}
+*Email:* ${data.email}
+*Phone:* ${data.phone || "N/A"}
+*Service:* ${data.service || "N/A"}
+*Message:* ${data.message}`;
+
+    // Open WhatsApp
+    const waUrl = `https://wa.me/917439786257?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, "_blank");
+    
+    // Reset form
+    form.reset();
+    setState("done");
   }
 
   if (state === "done")
@@ -122,21 +155,47 @@ export function ContactForm() {
       <div className="flex flex-col items-center gap-3 rounded-sm bg-secondary p-10 text-center">
         <CheckCircle2 className="h-12 w-12 text-primary" />
         <h3 className="text-2xl font-bold">Thank you!</h3>
-        <p className="text-muted-foreground">Your enquiry has been received. We will get back to you soon.</p>
-        <button onClick={() => setState("idle")} className="mt-2 font-bold text-primary">Send another</button>
+        <p className="text-muted-foreground">
+          Your enquiry has been received. We will get back to you soon.
+        </p>
+        <button onClick={() => setState("idle")} className="mt-2 font-bold text-primary">
+          Send another
+        </button>
       </div>
     );
 
   return (
     <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2" noValidate>
       <input name="name" placeholder="Your Name *" maxLength={100} className={inputCls} required />
-      <input name="email" type="email" placeholder="Email Address *" maxLength={255} className={inputCls} required />
-      <input name="phone" type="tel" placeholder="Phone Number" maxLength={20} className={inputCls} />
+      <input
+        name="email"
+        type="email"
+        placeholder="Email Address *"
+        maxLength={255}
+        className={inputCls}
+        required
+      />
+      <input
+        name="phone"
+        type="tel"
+        placeholder="Phone Number"
+        maxLength={20}
+        className={inputCls}
+      />
       <select name="service" className={inputCls} defaultValue="">
         <option value="">Select a Service</option>
-        {SERVICES.map((s) => <option key={s.title}>{s.title}</option>)}
+        {SERVICES.map((s) => (
+          <option key={s.title}>{s.title}</option>
+        ))}
       </select>
-      <textarea name="message" placeholder="Your Message *" rows={5} maxLength={2000} className={`${inputCls} sm:col-span-2`} required />
+      <textarea
+        name="message"
+        placeholder="Your Message *"
+        rows={5}
+        maxLength={2000}
+        className={`${inputCls} sm:col-span-2`}
+        required
+      />
       {state === "error" && <p className="text-sm text-destructive sm:col-span-2">{err}</p>}
       <button
         type="submit"
