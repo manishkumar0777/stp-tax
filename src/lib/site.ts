@@ -1,4 +1,17 @@
-import { Building2, Users, FileText, Receipt, ClipboardCheck, Calculator } from "lucide-react";
+import { 
+  Building2, 
+  Users, 
+  FileText, 
+  Receipt, 
+  ClipboardCheck, 
+  Calculator,
+  Rocket,
+  HandHeart,
+  Landmark,
+  BadgeCheck,
+  Award,
+  Key
+} from "lucide-react";
 
 export const SITE = {
   name: "Sterling Tax Partner",
@@ -19,7 +32,7 @@ export const SERVICES = [
   },
   {
     icon: Users,
-    title: "NGO & Society Registration",
+    title: "Trust, Society & NGO Registration",
     text: "Register your trust, society or Section 8 company with complete documentation support.",
   },
   {
@@ -41,5 +54,35 @@ export const SERVICES = [
     icon: Calculator,
     title: "Accounting & Compliance",
     text: "Keep your finances organised with professional bookkeeping and ongoing statutory compliance.",
+  },
+  {
+    icon: Rocket,
+    title: "Startup India Registration",
+    text: "Register your startup under DPIIT to avail tax exemptions and funding benefits.",
+  },
+  {
+    icon: HandHeart,
+    title: "CSR Registration",
+    text: "Complete CSR-1 registration and documentation for NGOs to receive corporate funding.",
+  },
+  {
+    icon: Landmark,
+    title: "80G and 12A Registration",
+    text: "Obtain tax exemption certificates for your NGO to attract more donors and grants.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "NGO Darpan",
+    text: "Register your NGO on the NITI Aayog Darpan portal to become eligible for government schemes.",
+  },
+  {
+    icon: Award,
+    title: "ISO Certification",
+    text: "Enhance your business credibility and global recognition with valid ISO certification.",
+  },
+  {
+    icon: Key,
+    title: "Digital Signature (DSC)",
+    text: "Procure secure Class 3 Digital Signature Certificates for hassle-free e-filing.",
   },
 ];
