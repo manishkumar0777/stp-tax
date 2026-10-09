@@ -40,10 +40,16 @@ export function SiteFooter() {
               {SITE.address}
             </li>
             <li>
-              <a href={SITE.phoneHref} className="flex gap-3 hover:text-primary">
-                <Phone className="h-5 w-5 text-primary" />
-                {SITE.phoneDisplay}
-              </a>
+              <div className="flex flex-col gap-1">
+                <a href={SITE.phoneHref} className="flex gap-3 hover:text-primary">
+                  <Phone className="h-5 w-5 text-primary" />
+                  {SITE.phoneDisplay}
+                </a>
+                <a href={SITE.phone2Href} className="flex gap-3 hover:text-primary">
+                  <Phone className="h-5 w-5 opacity-0" />
+                  {SITE.phone2Display}
+                </a>
+              </div>
             </li>
             <li>
               <a href={SITE.emailHref} className="flex gap-3 break-all hover:text-primary">

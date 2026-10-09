@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   const cards = [
     { icon: MapPin, t: "Our Address", v: SITE.address },
-    { icon: Phone, t: "Phone Number", v: SITE.phoneDisplay, href: SITE.phoneHref },
+    { icon: Phone, t: "Phone Number", v: SITE.phoneDisplay, href: SITE.phoneHref, v2: SITE.phone2Display, href2: SITE.phone2Href },
     { icon: Mail, t: "Email Address", v: SITE.email, href: SITE.emailHref },
   ];
   return (
@@ -31,12 +31,22 @@ export default function ContactPage() {
                 </span>
                 <h2 className="mt-5 text-xl font-bold">{c.t}</h2>
                 {c.href ? (
-                  <a
-                    href={c.href}
-                    className="mt-2 break-all text-muted-foreground hover:text-primary"
-                  >
-                    {c.v}
-                  </a>
+                  <div className="mt-2 flex flex-col items-center gap-1">
+                    <a
+                      href={c.href}
+                      className="break-all text-muted-foreground hover:text-primary"
+                    >
+                      {c.v}
+                    </a>
+                    {c.href2 && (
+                      <a
+                        href={c.href2}
+                        className="break-all text-muted-foreground hover:text-primary"
+                      >
+                        {c.v2}
+                      </a>
+                    )}
+                  </div>
                 ) : (
                   <p className="mt-2 text-muted-foreground">{c.v}</p>
                 )}
