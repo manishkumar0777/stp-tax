@@ -10,7 +10,13 @@ import {
   Landmark,
   BadgeCheck,
   Award,
-  Key
+  Key,
+  FileCheck,
+  CreditCard,
+  ShieldCheck,
+  Utensils,
+  UserCheck,
+  Handshake
 } from "lucide-react";
 
 export const SITE = {
@@ -87,5 +93,35 @@ export const SERVICES = [
     icon: Key,
     title: "Digital Signature (DSC)",
     text: "Procure secure Class 3 Digital Signature Certificates for hassle-free e-filing.",
+  },
+  {
+    icon: FileCheck,
+    title: "Trade License",
+    text: "Obtain trade licenses effortlessly to run your business operations legally and smoothly.",
+  },
+  {
+    icon: CreditCard,
+    title: "PAN, TAN, TDS Return",
+    text: "Handle your tax-related documentation seamlessly, including PAN, TAN, and TDS return filing.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Trademark Registration",
+    text: "Protect your brand identity with our reliable trademark registration services.",
+  },
+  {
+    icon: Utensils,
+    title: "FSSAI License",
+    text: "Get your food business compliant with industry regulations with our FSSAI licensing services.",
+  },
+  {
+    icon: UserCheck,
+    title: "ESIC and PF Registration",
+    text: "Manage employee benefits and statutory obligations with ESIC and PF registration support.",
+  },
+  {
+    icon: Handshake,
+    title: "Partnership Deed",
+    text: "We provide comprehensive assistance in drafting and registering partnership deeds to ensure your business operates smoothly and legally.",
   },
 ];
