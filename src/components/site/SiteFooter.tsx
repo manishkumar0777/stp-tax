@@ -58,7 +58,7 @@ export function SiteFooter() {
           <iframe
             title="Office location map"
             src="https://www.google.com/maps?q=Stephen+House,+BBD+Bagh,+Kolkata+700001&output=embed"
-            className="aspect-square w-full rounded-sm border-0 opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+            className="aspect-square w-full rounded-sm border-0"
             loading="lazy"
           />
         </div>
