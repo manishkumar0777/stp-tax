@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { MapPin, Mail, Phone, Menu, X, ArrowRight } from "lucide-react";
-import logo from "@/assets/sterling-logo.png";
+import logo from "@/assets/sterling-logo.webp";
 import { SITE } from "@/lib/site";
 
 const NAV = [

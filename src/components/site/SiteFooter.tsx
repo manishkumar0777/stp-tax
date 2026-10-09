@@ -5,8 +5,8 @@ import { SITE, SERVICES } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-ink-muted">
-      <div className="container-site grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
+      <div className="container-site grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="lg:col-span-3">
           <h3 className="text-2xl font-bold text-ink-foreground">
             Sterling <span className="text-primary">Tax Partner</span>
           </h3>
@@ -15,13 +15,13 @@ export function SiteFooter() {
             entrepreneurs, startups and established businesses.
           </p>
         </div>
-        <div>
-          <h4 className="mb-5 text-lg font-bold text-ink-foreground">Quick Links</h4>
+        <div className="lg:col-span-2">
+          <h4 className="mb-5 text-lg font-bold text-ink-foreground">Links & Services</h4>
           <ul className="space-y-3">
             {[
               ["/", "Home"],
               ["/about", "About Us"],
-              ["/services", "Services"],
+              ["/services", "All Services"],
               ["/contact", "Contact Us"],
             ].map(([to, l]) => (
               <li key={to}>
@@ -32,19 +32,7 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
-        <div>
-          <h4 className="mb-5 text-lg font-bold text-ink-foreground">Our Services</h4>
-          <ul className="space-y-3">
-            {SERVICES.map((s) => (
-              <li key={s.title}>
-                <Link href="/services" className="hover:text-primary">
-                  » {s.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
+        <div className="lg:col-span-3">
           <h4 className="mb-5 text-lg font-bold text-ink-foreground">Contact Info</h4>
           <ul className="space-y-4">
             <li className="flex gap-3">
@@ -64,6 +52,15 @@ export function SiteFooter() {
               </a>
             </li>
           </ul>
+        </div>
+        <div className="lg:col-span-4">
+          <h4 className="mb-5 text-lg font-bold text-ink-foreground">Locate Us</h4>
+          <iframe
+            title="Office location map"
+            src="https://www.google.com/maps?q=Stephen+House,+BBD+Bagh,+Kolkata+700001&output=embed"
+            className="aspect-square w-full rounded-sm border-0 opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+            loading="lazy"
+          />
         </div>
       </div>
       <div className="border-t border-ink-muted/20">

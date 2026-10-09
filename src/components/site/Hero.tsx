@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/success-bg.webp";
+import hero4 from "@/assets/team-experts.webp";
 
 const SLIDES = [
   {
@@ -22,11 +24,18 @@ const SLIDES = [
     text: "Accurate, timely tax filings and audit support for individuals and businesses.",
   },
   {
-    img: hero1 as any,
+    img: hero3 as any,
     eyebrow: "Your trusted tax & compliance expert",
     l1: "All Your Compliance",
     l2: "in One Place!",
     text: "Accounting, NGO & Society registration and ongoing statutory compliance under one roof.",
+  },
+  {
+    img: hero4 as any,
+    eyebrow: "Dedicated Professionals At Your Service",
+    l1: "Expertise You",
+    l2: "Can Count On",
+    text: "Our seasoned Chartered Accountants and Legal Experts ensure your business is always on the right track.",
   },
 ];
 
@@ -49,7 +58,7 @@ export function Hero() {
         className="animate-hero-zoom absolute inset-0 -z-20 h-full w-full object-cover"
       />
       <div className="absolute inset-0 -z-10 bg-overlay" />
-      <div key={i} className="container-site flex h-full flex-col justify-center">
+      <div key={i} className="container-site flex h-full flex-col justify-center text-center items-center md:items-start md:text-left">
         <p className="animate-hero-up eyebrow text-base">{s.eyebrow}</p>
         <h1 className="animate-hero-up mt-4 text-4xl font-bold leading-tight [animation-delay:150ms] sm:text-6xl md:text-7xl">
           {s.l1}

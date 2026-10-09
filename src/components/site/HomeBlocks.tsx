@@ -108,3 +108,101 @@ export function WhyChoose() {
     </section>
   );
 }
+
+import teamImg from "@/assets/team-experts.webp";
+import successBg from "@/assets/success-bg.webp";
+import valuesImg from "@/assets/values-img.webp";
+
+export function OurTeamBlock() {
+  return (
+    <section className="py-24 bg-background">
+      <div className="container-site grid items-center gap-14 lg:grid-cols-2">
+        <div className="order-2 lg:order-1 relative">
+          <div className="absolute -bottom-5 -left-5 h-full w-full rounded-sm border-4 border-primary" />
+          <img
+            src={(teamImg as any).src || teamImg}
+            alt="Our expert tax team"
+            loading="lazy"
+            className="relative h-[500px] w-full rounded-sm object-cover shadow-lg"
+          />
+        </div>
+        <div className="order-1 lg:order-2">
+          <p className="eyebrow">Meet The Experts</p>
+          <h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+            Dedicated Professionals At Your Service
+          </h2>
+          <p className="mt-6 leading-relaxed text-muted-foreground">
+            Our team consists of seasoned Chartered Accountants, Company Secretaries, and Legal Experts who bring years of industry experience. We believe that behind every successful business is a strong backbone of compliance and financial strategy. 
+          </p>
+          <ul className="mt-6 space-y-3">
+            {[
+              "Highly qualified CA and CS professionals",
+              "Years of corporate compliance experience",
+              "Dedicated account managers for every client"
+            ].map((item, i) => (
+              <li key={i} className="flex items-center gap-3 font-semibold">
+                <ShieldCheck className="h-5 w-5 text-primary" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function SuccessMetricsBlock() {
+  return (
+    <section className="relative isolate overflow-hidden py-28 md:py-36 text-ink-foreground">
+      <img
+        src={(successBg as any).src || successBg}
+        alt="Success handshake"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+      />
+      <div className="absolute inset-0 -z-10 bg-overlay bg-ink/90" />
+      <div className="container-site relative z-10 text-center">
+        <p className="eyebrow text-white">Our Track Record</p>
+        <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
+          Trusted By Hundreds Of Businesses
+        </h2>
+      </div>
+    </section>
+  );
+}
+
+export function CoreValuesBlock() {
+  return (
+    <section className="py-24 bg-secondary">
+      <div className="container-site grid items-center gap-14 lg:grid-cols-2">
+        <div>
+          <p className="eyebrow">Our Philosophy</p>
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            Integrity, Accuracy, and Growth
+          </h2>
+          <p className="mt-6 leading-relaxed text-muted-foreground">
+            We don't just crunch numbers or file forms; we act as partners in your growth journey. Our core values dictate every action we take, ensuring you receive transparent, honest, and highly accurate financial advice.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            <div className="rounded-sm bg-background p-6 shadow-sm border-t-2 border-primary">
+              <h3 className="text-lg font-bold">Integrity First</h3>
+              <p className="mt-2 text-sm text-muted-foreground">Complete transparency in all our dealings.</p>
+            </div>
+            <div className="rounded-sm bg-background p-6 shadow-sm border-t-2 border-primary">
+              <h3 className="text-lg font-bold">Flawless Accuracy</h3>
+              <p className="mt-2 text-sm text-muted-foreground">Zero-error policy for all your filings.</p>
+            </div>
+          </div>
+        </div>
+        <div className="relative">
+          <img
+            src={(valuesImg as any).src || valuesImg}
+            alt="Our core values"
+            loading="lazy"
+            className="h-[500px] w-full rounded-sm object-cover shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}

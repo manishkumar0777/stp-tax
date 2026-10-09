@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/site/Hero";
 import { ConsultationCta, ServicesGrid } from "@/components/site/Sections";
-import { AboutBlock, WhyChoose } from "@/components/site/HomeBlocks";
+import { AboutBlock, WhyChoose, OurTeamBlock, SuccessMetricsBlock, CoreValuesBlock } from "@/components/site/HomeBlocks";
 
 export const metadata: Metadata = {
   title: "Sterling Tax Partner — Your Trusted Tax & Compliance Expert, Kolkata",
@@ -16,6 +16,9 @@ export default function Index() {
       <AboutBlock />
       <ServicesGrid />
       <WhyChoose />
+      <SuccessMetricsBlock />
+      <OurTeamBlock />
+      <CoreValuesBlock />
       <ConsultationCta />
     </>
   );
