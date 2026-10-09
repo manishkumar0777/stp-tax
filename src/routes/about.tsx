@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageBanner, ConsultationCta } from "@/components/site/Sections";
-import { AboutBlock, WhyChoose } from "./index";
+import { AboutBlock, WhyChoose } from "@/components/site/HomeBlocks";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
