@@ -32,7 +32,7 @@ function Hero() {
     const t = setInterval(() => setI((v) => (v + 1) % SLIDES.length), 6000);
     return () => clearInterval(t);
   }, [i]);
-  const s = SLIDES[i];
+  const s = SLIDES[i] ?? SLIDES[0]!;
   return (
     <section className="relative isolate h-[560px] overflow-hidden text-ink-foreground md:h-[720px]">
       <img key={`img-${i}`} src={s.img} alt="" width={1920} height={1088} className="animate-hero-zoom absolute inset-0 -z-20 h-full w-full object-cover" />
