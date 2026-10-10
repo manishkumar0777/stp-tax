@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://stp-tax.vercel.app"),
   title: "Your Trusted Partner for Business Solutions - Sterling Tax Partner",
   description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more. Partner with us to streamline your business operations and achieve success.",
   openGraph: {
