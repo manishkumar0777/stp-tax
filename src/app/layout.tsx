@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/visitot-cardvertical.jpg",
+        width: 1024,
+        height: 1536,
         alt: "Sterling Tax Partner Business Solutions",
       },
     ],
