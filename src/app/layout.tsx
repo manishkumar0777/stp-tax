@@ -14,9 +14,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/perfect-og.png",
-        width: 1200,
-        height: 630,
+        url: "/visitor-card.jpg",
         alt: "Sterling Tax Partner Business Solutions",
       },
     ],
@@ -25,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Your Trusted Partner for Business Solutions - Sterling Tax Partner",
     description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more. Partner with us to streamline your business operations and achieve success.",
-    images: ["/perfect-og.png"],
+    images: ["/visitor-card.jpg"],
   }
 };
 
