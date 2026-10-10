@@ -5,8 +5,18 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Sterling Tax Partner",
-  description: "Your Trusted Tax & Compliance Expert in Kolkata.",
+  title: "Your Trusted Partner for Business Solutions - Sterling Tax Partner",
+  description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more. Partner with us to streamline your business operations and achieve success.",
+  openGraph: {
+    title: "Your Trusted Partner for Business Solutions - Sterling Tax Partner",
+    description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more. Partner with us to streamline your business operations and achieve success.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Your Trusted Partner for Business Solutions - Sterling Tax Partner",
+    description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more. Partner with us to streamline your business operations and achieve success.",
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
