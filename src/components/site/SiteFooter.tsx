@@ -70,8 +70,19 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-ink-muted/20">
-        <div className="container-site py-5 text-center text-sm">
-          © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+        <div className="container-site py-5 text-center text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <p>
+            Designed & Developed by{" "}
+            <a 
+              href="https://youlearn.in" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:underline font-semibold"
+            >
+              YouLearn
+            </a>
+          </p>
         </div>
       </div>
     </footer>

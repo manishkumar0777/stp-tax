@@ -52,6 +52,12 @@ export const metadata: Metadata = {
     description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more.",
     images: [`${BASE_URL}/images/og-image.jpg`],
   },
+  other: {
+    "geo.region": "IN-WB",
+    "geo.placename": "Kolkata",
+    "geo.position": "22.5726;88.3639",
+    "ICBM": "22.5726, 88.3639"
+  },
   alternates: {
     canonical: BASE_URL,
   },
