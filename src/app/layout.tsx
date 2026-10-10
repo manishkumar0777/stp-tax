@@ -12,11 +12,20 @@ export const metadata: Metadata = {
     title: "Your Trusted Partner for Business Solutions - Sterling Tax Partner",
     description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more. Partner with us to streamline your business operations and achieve success.",
     type: "website",
+    images: [
+      {
+        url: "/visitor-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sterling Tax Partner Business Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Your Trusted Partner for Business Solutions - Sterling Tax Partner",
     description: "Sterling Tax Partner offers comprehensive business solutions, including Company formation, GST registration, ITR filing, trademark registration, accounting services, and more. Partner with us to streamline your business operations and achieve success.",
+    images: ["/visitor-card.jpg"],
   }
 };
 
