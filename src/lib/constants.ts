@@ -4,6 +4,6 @@ const normalizeUrl = (url?: string) => {
 };
 
 export const BASE_URL =
-  normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL) ||
-  normalizeUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
+  normalizeUrl(process.env['NEXT_PUBLIC_SITE_URL']) ||
+  normalizeUrl(process.env['VERCEL_PROJECT_PRODUCTION_URL']) ||
   "https://sterlingtaxpartner.in";
